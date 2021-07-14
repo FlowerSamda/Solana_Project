@@ -1,0 +1,70 @@
+테스트용 계정 1
+===========================================================================
+pubkey: 6EvGXbAE8y2gFJmJaEPvnesZjaKmRj88FCdFxXC1EWzD
+===========================================================================
+
+
+테스트용 계정 2
+======================================================================================
+pubkey: CWqeqbuiAfMBLynFy9tJEyt1xwe1F5Fjfq7Ei5V4noTJ
+======================================================================================
+Save this seed phrase to recover your new keypair:
+cherry marine taste possible garlic outdoor uncover output library chair mansion funny
+======================================================================================
+
+스테이킹 계정
+===================================================================================
+pubkey: 4AVJ9xcgUbkoKGqyixoNxwrY6PKQBFCPXQsSRAQop5NG
+===================================================================================
+Save this seed phrase to recover your new keypair:
+supreme example danger luggage very spike guilt gesture chief reject network deputy
+===================================================================================
+
+1번 시드 스테이킹
+Bt9SUi2jtzDGA5uSXXEUyvi6CeQ2gDZUjvZUqNn2X9z9
+
+
+
+================================ Base ==========================================
+
+// 에어드랍
+solana airdrop 1 <RECIPIENT_ACCOUNT_ADDRESS> --url https://api.devnet.solana.com
+
+// 잔고 확인
+solana balance <ACCOUNT_ADDRESS> --url https://api.devnet.solana.com
+
+// 지갑 주소 생성
+solana-keygen new --no-passphrase --no-outfile    
+
+// 솔라나 토큰 전송
+solana transfer --from <KEYPAIR> <RECIPIENT_ACCOUNT_ADDRESS> 0.5 --allow-unfunded-recipient --url https://api.devnet.solana.com --fee-payer <KEYPAIR>
+
+===============================STAKE===========================================
+
+// 스테이킹 계정 생성
+solana create-stake-account --from <KEYPAIR> <STAKE_ACCOUNT_KEYPAIR> <AMOUNT> \
+    --stake-authority <KEYPAIR> --withdraw-authority <KEYPAIR> \
+    --fee-payer <KEYPAIR>
+
+--------------------------------------------------------------------------------------------------
+// *시드를 사용한 추가 스테이크 계정 추가*
+-> STAKE_ACCOUNT를 하나 더 생성할 필요가 없음!
+solana create-stake-account --from <KEYPAIR> <STAKE_ACCOUNT_KEYPAIR> --seed <STRING> <AMOUNT> \
+    --stake-authority <PUBKEY> --withdraw-authority <PUBKEY> --fee-payer <KEYPAIR>
+
+// 스테이킹 시드 주소 확인 ( <SEED_STRING에 0, 1, ...)
+solana create-address-with-seed --from <PUBKEY> <SEED_STRING> STAKE
+--------------------------------------------------------------------------------------------------
+
+// 스테이킹과 출금 권한 설정
+solana stake-authorize <STAKE_ACCOUNT_ADDRESS> \
+    --stake-authority <KEYPAIR> --new-stake-authority <PUBKEY> \
+    --fee-payer <KEYPAIR>
+
+==================================== Delegate Stake ============================================
+
+// 솔라나 검증인 (최근 기록, 정보 config)
+solana validators 
+
+// 테스트용 vote account 
+9MxYypkd5bXxo9Vmz5NSKmBojV9BKMdidgupV9c2Fd1R

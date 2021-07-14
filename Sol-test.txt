@@ -1,0 +1,6 @@
+===========================================================================
+pubkey: 6EvGXbAE8y2gFJmJaEPvnesZjaKmRj88FCdFxXC1EWzD
+===========================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+episode narrow ghost over worth tortoise dog fabric age october below plate
+===========================================================================
