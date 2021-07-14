@@ -53,6 +53,7 @@ solana create-stake-account --from <KEYPAIR> <STAKE_ACCOUNT_KEYPAIR> --seed <STR
     --stake-authority <PUBKEY> --withdraw-authority <PUBKEY> --fee-payer <KEYPAIR>
 
 // 스테이킹 시드 주소 확인 ( <SEED_STRING에 0, 1, ...)
+// withdraw나 delegate를 할 때, 짜피 authority_account만 있으면 되서 노상관!
 solana create-address-with-seed --from <PUBKEY> <SEED_STRING> STAKE
 --------------------------------------------------------------------------------------------------
 
@@ -67,4 +68,32 @@ solana stake-authorize <STAKE_ACCOUNT_ADDRESS> \
 solana validators 
 
 // 테스트용 vote account 
-9MxYypkd5bXxo9Vmz5NSKmBojV9BKMdidgupV9c2Fd1R
+CYrgbJYPFobyuxG45fb5nMmZepXRVPDiJoxkFYGpmcm5
+
+// 투표 위임
+solana delegate-stake --stake-authority <KEYPAIR> <STAKE_ACCOUNT_ADDRESS> <VOTE_ACCOUNT_ADDRESS> \
+    --fee-payer <KEYPAIR>
+
+// 스테이킹 상태 확인
+solana stake-account <STAKE_ACCOUNT_ADDRESS>
+
+// 스테이킹 해제 
+solana deactivate-stake --stake-authority <KEYPAIR> <STAKE_ACCOUNT_ADDRESS> \
+    --fee-payer <KEYPAIR>
+
+// 스테이킹 인출
+solana withdraw-stake --withdraw-authority <KEYPAIR> <STAKE_ACCOUNT_ADDRESS> <RECIPIENT_ADDRESS> <AMOUNT> \
+    --fee-payer <KEYPAIR>
+
+// 스테이킹 스플릿 (분할)
+solana split-stake --stake-authority <KEYPAIR> <STAKE_ACCOUNT_ADDRESS> <NEW_STAKE_ACCOUNT_KEYPAIR> <AMOUNT> \
+    --fee-payer <KEYPAIR>
+
+// 스테이크 계정 추가 정보들
+https://docs.solana.com/cli/manage-stake-accounts
+
+============================================ Program Deploy ===================================
+https://docs.solana.com/cli/deploy-a-program
+
+============================================ Solana-cli =======================================
+https://docs.solana.com/cli/usage
